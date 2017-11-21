@@ -1,0 +1,67 @@
+Module Module1
+    Dim startpos As Integer = 0
+    Dim thequeue(9) As Char
+    Dim queue() As Char
+    Dim endpos As Integer = -1
+
+    Sub Main()
+        Dim count As Integer = 0
+        Dim input As Char
+        Do
+
+
+            Console.WriteLine("What charachter do you want?")
+            input = Console.ReadLine()
+
+            Call enqueue(thequeue, input)
+            count = count + 1
+            If count >= 5 Then
+                Call processqueue(thequeue, startpos, endpos)
+            End If
+            '
+            Console.ReadLine()
+
+            'Console.WriteLine(input)
+            'Console.WriteLine(queueempty(endpos, startpos))
+        Loop Until queueempty(endpos, startpos) Or input = "*"
+        Console.WriteLine("End of program. Press a key to stop")
+        Console.ReadLine()
+    End Sub
+
+
+    Sub enqueue(ByRef thequeue() As Char, ByRef item As Char)
+        endpos = endpos + 1
+        thequeue(endpos) = item
+    End Sub
+
+    Function dequeue(thequeue() As Char) As Char
+        Dim output As Char
+        output = thequeue(startpos)
+        'Console.WriteLine(output)
+        'Console.ReadLine()
+        startpos = startpos + 1
+        Return output
+    End Function
+
+    Function queueempty(ByVal myendpos As Integer, ByVal mystartpos As Integer)
+        Dim bool As Boolean
+        bool = False
+        Dim out As String = Str(mystartpos) + " " + Str(myendpos)
+        'Console.WriteLine(out)
+        'Console.WriteLine(Str(startpos) + " " + Str(endpos))
+        If mystartpos = myendpos + 1 Then
+            bool = True
+
+        End If
+        Return bool
+    End Function
+
+    Sub processqueue(ByRef thequeue() As Char, ByRef startpos As Integer, ByRef endpos As Integer)
+        Dim item As Char
+        item = dequeue(thequeue)
+        Dim out As String = item.ToString()
+        Console.WriteLine(LCase(out))
+        'startpos = startpos + 1
+    End Sub
+
+End Module
