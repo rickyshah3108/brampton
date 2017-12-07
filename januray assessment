@@ -1,0 +1,81 @@
+Module Module1
+    'Four Teams - Ricky Shah - 07/12/17'
+    Dim counter As Integer
+    Dim counter2 As Integer
+
+    Sub Main()
+        Dim teamarray(0 To 3) As String
+        Dim name As String
+        Dim num1 As Integer
+        Dim num2 As Integer
+        Dim endcommand As String
+        For i = 0 To 3
+            Console.WriteLine("Enter a team name:")
+            name = Console.ReadLine()
+            teamarray(i) = name
+        Next i
+        Do Until endcommand = "y"
+            num1 = Rnd() * 4
+
+            Do Until Not num1
+                num2 = Rnd() * 4
+            Loop
+            Console.WriteLine(teamarray(num1))
+            Console.WriteLine(teamarray(num2))
+            count(counter, counter2, teamarray(num1), teamarray(num2))
+            Console.WriteLine("Team" & teamarray(num1) & "took" & counter & "turns")
+            Console.WriteLine("Team" & teamarray(num2) & "took" & counter2 & "turns")
+
+            If counter > counter2 Then
+                Console.WriteLine(teamarray(num2) & "beat" & teamarray(num1))
+            ElseIf counter < counter2 Then
+                Console.WriteLine(teamarray(num1) & "beat" & teamarray(num2))
+            ElseIf counter = counter2 Then
+                Console.WriteLine("Both of the teams drew")
+
+            End If
+            Console.WriteLine("press y to end or any key to carry on")
+            endcommand = Console.ReadLine()
+            If endcommand = "y" Then End
+
+        Loop
+
+    End Sub
+    Sub count(ByRef counter As Integer, ByRef counter2 As Integer, team1 As String, team2 As String)
+        Dim random2 As Integer
+        Dim random As Integer
+        Dim answer As Integer
+        Dim answer1 As Integer
+        Console.WriteLine("The team currently playing is" & team1)
+        random = Rnd() * 10
+        Console.WriteLine("Enter a guess for the number")
+        answer = Console.ReadLine()
+        If answer = random Then
+            counter = 1
+        Else
+
+            Do Until answer = random
+                Console.WriteLine("Wrong answer try again")
+                Console.WriteLine("Enter a guess for the number")
+                answer = Console.ReadLine()
+                counter = counter + 1
+            Loop
+        End If
+        Console.WriteLine("The team currently playing is" & team2)
+        random2 = Rnd() * 10
+        Console.WriteLine("Enter a guess for the number")
+        answer1 = Console.ReadLine()
+        If answer1 = random Then
+            counter2 = 1
+        Else
+
+            Do Until answer1 = random2
+                Console.WriteLine("Wrong answer try again")
+                Console.WriteLine("Enter a guess for the number")
+                answer1 = Console.ReadLine()
+                counter2 = counter2 + 1
+            Loop
+        End If
+    End Sub
+
+End Module
