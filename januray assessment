@@ -65,7 +65,7 @@ Module Module1
         random2 = Rnd() * 10
         Console.WriteLine("Enter a guess for the number")
         answer1 = Console.ReadLine()
-        If answer1 = random Then
+        If answer1 = random2 Then
             counter2 = 1
         Else
 
