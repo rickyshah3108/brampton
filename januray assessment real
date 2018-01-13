@@ -7,6 +7,16 @@ Module Module1
         Dim base As String
         Dim toppingarray As String
     End Structure
+    'Linked List node Set up'
+    structure node
+    dim dataitem as order 
+    dim pointer as integer
+    
+    dim pizzaorders(10) as node
+    const nullptr = -1
+    dim startptr = nullptr
+    
+    
     Sub Main()
         Dim choice As String = ""
         Dim again As String = ""
@@ -17,7 +27,8 @@ Module Module1
         Dim shopopen As Boolean = True
         Dim endorder As Boolean = False
         Dim stock As Integer
-        Dim topp(9, 1) As String
+        dim nooforders as integer = 0
+        Dim topp(1, 9) As String
         topp(0, 0) = "Cheese"
         topp(1, 0) = "ham"
         topp(2, 0) = "pepperoni"
@@ -39,538 +50,82 @@ Module Module1
         topp(7, 1) = Int(10)
         topp(8, 1) = Int(10)
         topp(9, 1) = Int(10)
-
-        Console.WriteLine("0" & topp(0, 0) & topp(0, 1))
-        Console.WriteLine("1" & topp(1, 0) & topp(1, 1))
-        Console.WriteLine("2" & topp(2, 0) & topp(2, 1))
-        Console.WriteLine("3" & topp(3, 0) & topp(3, 1))
-        Console.WriteLine("4" & topp(4, 0) & topp(4, 1))
-        Console.WriteLine("5" & topp(5, 0) & topp(5, 1))
-        Console.WriteLine("6" & topp(6, 0) & topp(6, 1))
-        Console.WriteLine("7" & topp(7, 0) & topp(7, 1))
-        Console.WriteLine("8" & topp(8, 0) & topp(8, 1))
-        Console.WriteLine("9" & topp(9, 0) & topp(9, 1))
-
-        Do
-            Console.WriteLine("Would you like a thin pan pizza or a pan base pizza. Enter T for Thin and P for Pan")
-            torp = Console.ReadLine()
-
-
-        Loop Until torp = "t" Or "p"
-        Do
-            For i = 1 To 10
-                Console.WriteLine("what toppings would you like on your pizza? Please enter numbers from between 0 and 9. Once you have finished please press x")
-                choice = Console.ReadLine()
-                picking(i) = choice
-                If topp(0, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(1, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(2, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(3, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(4, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(5, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(6, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(7, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(8, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(9, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-            Next i
-        Loop Until choice = "x"
-        If choice = topp(0, 0) Then
-            topp(0, 1) = topp(0, 1) - 1
-
-        End If
-        If choice = topp(1, 0) Then
-            topp(1, 1) = topp(1, 1) - 1
-
-        End If
-        If choice = topp(2, 0) Then
-            topp(2, 1) = topp(2, 1) - 1
-
-        End If
-        If choice = topp(3, 0) Then
-            topp(3, 1) = topp(3, 1) - 1
-
-        End If
-        If choice = topp(4, 0) Then
-            topp(4, 1) = topp(4, 1) - 1
-
-        End If
-        If choice = topp(5, 0) Then
-            topp(5, 1) = topp(5, 1) - 1
-
-        End If
-        If choice = topp(6, 0) Then
-            topp(6, 1) = topp(6, 1) - 1
-
-        End If
-        If choice = topp(7, 0) Then
-            topp(7, 1) = topp(7, 1) - 1
-
-        End If
-        If choice = topp(8, 0) Then
-            topp(8, 1) = topp(8, 1) - 1
-        End If
-        If choice = topp(9, 0) Then
-            topp(9, 1) = topp(9, 1) - 1
-
-
-
-        End If
-
-
-
-
-    End Sub
-
-End Module
-Module Module1
-    'JANUARY ASSESSMENT - PART 2'
-    'Ricky Shah'
-    '05/01/2018'
-    Private Structure order
-        Dim no As Integer
-        Dim base As String
-        Dim toppingarray As String
-    End Structure
-    Sub Main()
-        Dim choice As String = ""
-        Dim again As String = ""
-        Dim topcount As Integer = 0
-        Dim torp As String
-        Dim index As Integer = 0
-        Dim picking(9) As String
-        Dim shopopen As Boolean = True
-        Dim endorder As Boolean = False
-        Dim stock As Integer
-        Dim topp(9, 1) As String
-        topp(0, 0) = "Cheese"
-        topp(1, 0) = "ham"
-        topp(2, 0) = "pepperoni"
-        topp(3, 0) = "pineapples"
-        topp(4, 0) = "mushroom"
-        topp(5, 0) = "cherry tomatoes"
-        topp(6, 0) = "chicken"
-        topp(7, 0) = "peppers"
-        topp(8, 0) = "olives"
-        topp(9, 0) = "jalapenos"
-
-        topp(0, 1) = Int(10)
-        topp(1, 1) = Int(10)
-        topp(2, 1) = Int(10)
-        topp(3, 1) = Int(10)
-        topp(4, 1) = Int(10)
-        topp(5, 1) = Int(10)
-        topp(6, 1) = Int(10)
-        topp(7, 1) = Int(10)
-        topp(8, 1) = Int(10)
-        topp(9, 1) = Int(10)
-
-        Console.WriteLine("0" & topp(0, 0) & topp(0, 1))
-        Console.WriteLine("1" & topp(1, 0) & topp(1, 1))
-        Console.WriteLine("2" & topp(2, 0) & topp(2, 1))
-        Console.WriteLine("3" & topp(3, 0) & topp(3, 1))
-        Console.WriteLine("4" & topp(4, 0) & topp(4, 1))
-        Console.WriteLine("5" & topp(5, 0) & topp(5, 1))
-        Console.WriteLine("6" & topp(6, 0) & topp(6, 1))
-        Console.WriteLine("7" & topp(7, 0) & topp(7, 1))
-        Console.WriteLine("8" & topp(8, 0) & topp(8, 1))
-        Console.WriteLine("9" & topp(9, 0) & topp(9, 1))
-
-        Do
-            Console.WriteLine("Would you like a thin pan pizza or a pan base pizza. Enter T for Thin and P for Pan")
-            torp = Console.ReadLine()
-
-
-        Loop Until torp = "t" Or "p"
-        Do
-            For i = 1 To 10
-                Console.WriteLine("what toppings would you like on your pizza? Please enter numbers from between 0 and 9. Once you have finished please press x")
-                choice = Console.ReadLine()
-                picking(i) = choice
-                If topp(0, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(1, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(2, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(3, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(4, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(5, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(6, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(7, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(8, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(9, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-            Next i
-        Loop Until choice = "x"
-        If choice = topp(0, 0) Then
-            topp(0, 1) = topp(0, 1) - 1
-
-        End If
-        If choice = topp(1, 0) Then
-            topp(1, 1) = topp(1, 1) - 1
-
-        End If
-        If choice = topp(2, 0) Then
-            topp(2, 1) = topp(2, 1) - 1
-
-        End If
-        If choice = topp(3, 0) Then
-            topp(3, 1) = topp(3, 1) - 1
-
-        End If
-        If choice = topp(4, 0) Then
-            topp(4, 1) = topp(4, 1) - 1
-
-        End If
-        If choice = topp(5, 0) Then
-            topp(5, 1) = topp(5, 1) - 1
-
-        End If
-        If choice = topp(6, 0) Then
-            topp(6, 1) = topp(6, 1) - 1
-
-        End If
-        If choice = topp(7, 0) Then
-            topp(7, 1) = topp(7, 1) - 1
-
-        End If
-        If choice = topp(8, 0) Then
-            topp(8, 1) = topp(8, 1) - 1
-        End If
-        If choice = topp(9, 0) Then
-            topp(9, 1) = topp(9, 1) - 1
-
-
-
-        End If
-
-
-
-
-    End Sub
-
-End Module
-Module Module1
-    'JANUARY ASSESSMENT - PART 2'
-    'Ricky Shah'
-    '05/01/2018'
-    Private Structure order
-        Dim no As Integer
-        Dim base As String
-        Dim toppingarray As String
-    End Structure
-    Sub Main()
-        Dim choice As String = ""
-        Dim again As String = ""
-        Dim topcount As Integer = 0
-        Dim torp As String
-        Dim index As Integer = 0
-        Dim picking(9) As String
-        Dim shopopen As Boolean = True
-        Dim endorder As Boolean = False
-        Dim stock As Integer
-        Dim topp(9, 1) As String
-        topp(0, 0) = "Cheese"
-        topp(1, 0) = "ham"
-        topp(2, 0) = "pepperoni"
-        topp(3, 0) = "pineapples"
-        topp(4, 0) = "mushroom"
-        topp(5, 0) = "cherry tomatoes"
-        topp(6, 0) = "chicken"
-        topp(7, 0) = "peppers"
-        topp(8, 0) = "olives"
-        topp(9, 0) = "jalapenos"
-
-        topp(0, 1) = Int(10)
-        topp(1, 1) = Int(10)
-        topp(2, 1) = Int(10)
-        topp(3, 1) = Int(10)
-        topp(4, 1) = Int(10)
-        topp(5, 1) = Int(10)
-        topp(6, 1) = Int(10)
-        topp(7, 1) = Int(10)
-        topp(8, 1) = Int(10)
-        topp(9, 1) = Int(10)
-
-        Console.WriteLine("0" & topp(0, 0) & topp(0, 1))
-        Console.WriteLine("1" & topp(1, 0) & topp(1, 1))
-        Console.WriteLine("2" & topp(2, 0) & topp(2, 1))
-        Console.WriteLine("3" & topp(3, 0) & topp(3, 1))
-        Console.WriteLine("4" & topp(4, 0) & topp(4, 1))
-        Console.WriteLine("5" & topp(5, 0) & topp(5, 1))
-        Console.WriteLine("6" & topp(6, 0) & topp(6, 1))
-        Console.WriteLine("7" & topp(7, 0) & topp(7, 1))
-        Console.WriteLine("8" & topp(8, 0) & topp(8, 1))
-        Console.WriteLine("9" & topp(9, 0) & topp(9, 1))
-
-        Do
-            Console.WriteLine("Would you like a thin pan pizza or a pan base pizza. Enter T for Thin and P for Pan")
-            torp = Console.ReadLine()
-
-
-        Loop Until torp = "t" Or "p"
-        Do
-            For i = 1 To 10
-                Console.WriteLine("what toppings would you like on your pizza? Please enter numbers from between 0 and 9. Once you have finished please press x")
-                choice = Console.ReadLine()
-                picking(i) = choice
-                If topp(0, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(1, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(2, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(3, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(4, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(5, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(6, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(7, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(8, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(9, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-            Next i
-        Loop Until choice = "x"
-        If choice = topp(0, 0) Then
-            topp(0, 1) = topp(0, 1) - 1
-
-        End If
-        If choice = topp(1, 0) Then
-            topp(1, 1) = topp(1, 1) - 1
-
-        End If
-        If choice = topp(2, 0) Then
-            topp(2, 1) = topp(2, 1) - 1
-
-        End If
-        If choice = topp(3, 0) Then
-            topp(3, 1) = topp(3, 1) - 1
-
-        End If
-        If choice = topp(4, 0) Then
-            topp(4, 1) = topp(4, 1) - 1
-
-        End If
-        If choice = topp(5, 0) Then
-            topp(5, 1) = topp(5, 1) - 1
-
-        End If
-        If choice = topp(6, 0) Then
-            topp(6, 1) = topp(6, 1) - 1
-
-        End If
-        If choice = topp(7, 0) Then
-            topp(7, 1) = topp(7, 1) - 1
-
-        End If
-        If choice = topp(8, 0) Then
-            topp(8, 1) = topp(8, 1) - 1
-        End If
-        If choice = topp(9, 0) Then
-            topp(9, 1) = topp(9, 1) - 1
-
-
-
-        End If
-
-
-
-
-    End Sub
-
-End Module
-Module Module1
-    'JANUARY ASSESSMENT - PART 2'
-    'Ricky Shah'
-    '05/01/2018'
-    Private Structure order
-        Dim no As Integer
-        Dim base As String
-        Dim toppingarray As String
-    End Structure
-    Sub Main()
-        Dim choice As String = ""
-        Dim again As String = ""
-        Dim topcount As Integer = 0
-        Dim torp As String
-        Dim index As Integer = 0
-        Dim picking(9) As String
-        Dim shopopen As Boolean = True
-        Dim endorder As Boolean = False
-        Dim stock As Integer
-        Dim topp(9, 1) As String
-        topp(0, 0) = "Cheese"
-        topp(1, 0) = "ham"
-        topp(2, 0) = "pepperoni"
-        topp(3, 0) = "pineapples"
-        topp(4, 0) = "mushroom"
-        topp(5, 0) = "cherry tomatoes"
-        topp(6, 0) = "chicken"
-        topp(7, 0) = "peppers"
-        topp(8, 0) = "olives"
-        topp(9, 0) = "jalapenos"
-
-        topp(0, 1) = Int(10)
-        topp(1, 1) = Int(10)
-        topp(2, 1) = Int(10)
-        topp(3, 1) = Int(10)
-        topp(4, 1) = Int(10)
-        topp(5, 1) = Int(10)
-        topp(6, 1) = Int(10)
-        topp(7, 1) = Int(10)
-        topp(8, 1) = Int(10)
-        topp(9, 1) = Int(10)
-
-        Console.WriteLine("0" & topp(0, 0) & topp(0, 1))
-        Console.WriteLine("1" & topp(1, 0) & topp(1, 1))
-        Console.WriteLine("2" & topp(2, 0) & topp(2, 1))
-        Console.WriteLine("3" & topp(3, 0) & topp(3, 1))
-        Console.WriteLine("4" & topp(4, 0) & topp(4, 1))
-        Console.WriteLine("5" & topp(5, 0) & topp(5, 1))
-        Console.WriteLine("6" & topp(6, 0) & topp(6, 1))
-        Console.WriteLine("7" & topp(7, 0) & topp(7, 1))
-        Console.WriteLine("8" & topp(8, 0) & topp(8, 1))
-        Console.WriteLine("9" & topp(9, 0) & topp(9, 1))
-
-        Do
-            Console.WriteLine("Would you like a thin pan pizza or a pan base pizza. Enter T for Thin and P for Pan")
-            torp = Console.ReadLine()
-
-
-        Loop Until torp = "t" Or "p"
-        Do
-            For i = 1 To 10
-                Console.WriteLine("what toppings would you like on your pizza? Please enter numbers from between 0 and 9. Once you have finished please press x")
-                choice = Console.ReadLine()
-                picking(i) = choice
-                If topp(0, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(1, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(2, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(3, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(4, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(5, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(6, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(7, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(8, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-                If topp(9, 1) = 0 Then
-                    Console.WriteLine("There are no more of this topping available")
-                End If
-            Next i
-        Loop Until choice = "x"
-        If choice = topp(0, 0) Then
-            topp(0, 1) = topp(0, 1) - 1
-
-        End If
-        If choice = topp(1, 0) Then
-            topp(1, 1) = topp(1, 1) - 1
-
-        End If
-        If choice = topp(2, 0) Then
-            topp(2, 1) = topp(2, 1) - 1
-
-        End If
-        If choice = topp(3, 0) Then
-            topp(3, 1) = topp(3, 1) - 1
-
-        End If
-        If choice = topp(4, 0) Then
-            topp(4, 1) = topp(4, 1) - 1
-
-        End If
-        If choice = topp(5, 0) Then
-            topp(5, 1) = topp(5, 1) - 1
-
-        End If
-        If choice = topp(6, 0) Then
-            topp(6, 1) = topp(6, 1) - 1
-
-        End If
-        If choice = topp(7, 0) Then
-            topp(7, 1) = topp(7, 1) - 1
-
-        End If
-        If choice = topp(8, 0) Then
-            topp(8, 1) = topp(8, 1) - 1
-        End If
-        If choice = topp(9, 0) Then
-            topp(9, 1) = topp(9, 1) - 1
-
-
-
-        End If
-
-
-
-
-    End Sub
-
-End Module
+while nooforders <= 9 and shopopen = true 
+        for index = 0 to 9 
+        console.writeline(Index & " " & toppings(0,index) & " " & toppings(1, index)
+        next index 
+        
+        console.writeline("Enter type of base (T)hin or (P)an")
+        choice = console.readline()
+        while choice.toupper() <> "T" And Choice.toupper() <> "p"
+        console.writeline("Error. Not a valid choice")
+        console.writeline("Enter type of base (T)hin or (P)an")
+        end while
+       
+       call addnode() 
+       console.readline()
+       
+       
+       while (topcount <= 5) and (endorder = false)
+          console.writeline("Enter the topping number 0 to 9")
+        choice = console.readline()
+        while int(choice) < 0 or int(choice) >  9
+        console.writeline("Error. Not a valid choice")
+          console.writeline("Enter the topping number 0 to 9")
+        end while
+       if int(toppings (1 , choice)) > 0 then
+       pizzaorders(nooforders).dataitem.topping(Topcount) = choice 
+       topcount += 1 
+       toppings(1,choice) = str(Int(toppings(1,choice)) -1 
+  end if 
+  console.writeline("want to add anymore toppings")
+  again = console.readline()
+  if again.toupper() = "N" then 
+  endorder = true
+  end if
+  end while 
+  
+  console.writeline(pizzaorders(nooforders).datatitem.no)
+    console.writeline(pizzaorders(nooforders).datatitem.base)
+    
+    for index = 0 to 4 
+      if pizzaorders(nooforders).dataitem.topping(index) <> -1 then
+      console.writeline(toppings(0,pizzaorders(nooforders).dataitem.topping(index)))
+      end if 
+      next index 
+      nooforders += 1 
+      console.writeline("Want to order another pizza") 
+      again = console.readline()
+      if again.toupper() = "N" then 
+      shopopen = False 
+      End if 
+      end while
+  
+  
+index = startptr 
+while (index <> nullptr )
+console.writeline(pizzaorders(index).datatitem.no)
+    console.writeline(pizzaorders(index).datatitem.base)
+    
+    for i = 0 to 4 
+      if pizzaorders(index).dataitem.topping(index) <> -1 then
+      console.writeline(toppings(0,pizzaorders(index).dataitem.topping(index)))
+      end if 
+      next i 
+      console.writeline("----")
+      index = pizzaoders(index).pointer
+  end while 
+  console.readline()
+  End Sub
+    
+
+sub addnode()
+if startptr = -1
+        startptr = 0 
+        end if 
+        pizzaorders[nooforders].dataaitem.base = choice
+                pizzaorders[nooforders].dataaitem.no = nooforders + 1 
+                redim pizzaorders(nooforders).dataitem.topping(4)
+                pizzaorders(nooforders).dataitem.topping = {-1, -1, -1, -1, -1}
+                
+end sub 
